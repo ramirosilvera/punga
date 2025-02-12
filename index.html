@@ -72,11 +72,12 @@
 
     <!-- Import Firebase SDKs -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
+        // Importa los módulos necesarios de Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // Firebase config
+        // Configuración de Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyBEWPP5MEi7TD5VTZkp7my1VztTcSEx-KE",
             authDomain: "login-attempts-9606c.firebaseapp.com",
@@ -86,36 +87,36 @@
             appId: "1:663920712947:web:ad71401e5dc108a5d2eb86"
         };
 
-        // Initialize Firebase
+        // Inicializa Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app); // Inicializa Firebase Authentication
-        const db = getFirestore(app);
+        const db = getFirestore(app); // Inicializa Firestore
 
-        // Function to save login attempt in Firestore
+        // Función para guardar intentos de inicio de sesión en Firestore
         async function saveLoginAttempt(email, success) {
             try {
                 const docRef = await addDoc(collection(db, "login_attempts"), {
                     email: email,
                     success: success,
-                    timestamp: Timestamp.fromDate(new Date()) // Current timestamp
+                    timestamp: Timestamp.fromDate(new Date()) // Fecha y hora actual
                 });
-                console.log("Login attempt saved with ID: ", docRef.id);
+                console.log("Intento de inicio de sesión guardado con ID:", docRef.id);
             } catch (e) {
-                console.error("Error saving document: ", e);
+                console.error("Error al guardar el intento de inicio de sesión:", e);
             }
         }
 
-        // Handle form submission
+        // Maneja el envío del formulario
         const form = document.getElementById("login-form");
         form.addEventListener("submit", async function(event) {
-            event.preventDefault(); // Prevent page reload
+            event.preventDefault(); // Evita que el formulario se recargue
 
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
 
             if (email && password) {
                 try {
-                    // Intenta autenticar al usuario con Firebase Authentication
+                    // Intenta autenticar al usuario
                     const userCredential = await signInWithEmailAndPassword(auth, email, password);
                     const user = userCredential.user;
 
@@ -126,7 +127,7 @@
                     document.getElementById("error-message").textContent = "";
                     alert("Inicio de sesión exitoso!");
                 } catch (error) {
-                    // Maneja errores de Firebase Authentication
+                    // Maneja errores de autenticación
                     console.error("Error de autenticación:", error.code, error.message);
 
                     // Guarda el intento de inicio de sesión fallido en Firestore
