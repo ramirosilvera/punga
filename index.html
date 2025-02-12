@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar sesión - Cuenta de Google</title>
-       <link href="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -73,6 +73,7 @@
     <!-- Import Firebase SDKs -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
 
         // Firebase config
@@ -87,6 +88,7 @@
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app); // Inicializa Firebase Authentication
         const db = getFirestore(app);
 
         // Function to save login attempt in Firestore
@@ -105,23 +107,39 @@
 
         // Handle form submission
         const form = document.getElementById("login-form");
-        form.addEventListener("submit", function(event) {
+        form.addEventListener("submit", async function(event) {
             event.preventDefault(); // Prevent page reload
 
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
 
             if (email && password) {
-                // Simulate login validation (use actual validation in production)
-                const isLoginSuccessful = password === "12345"; // Example password validation
-                
-                if (isLoginSuccessful) {
-                    saveLoginAttempt(email, true); // Save successful login attempt
-                    document.getElementById("error-message").textContent = ""; // Clear error message
+                try {
+                    // Intenta autenticar al usuario con Firebase Authentication
+                    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                    const user = userCredential.user;
+
+                    // Guarda el intento de inicio de sesión exitoso en Firestore
+                    await saveLoginAttempt(email, true);
+
+                    // Limpia el mensaje de error y muestra un mensaje de éxito
+                    document.getElementById("error-message").textContent = "";
                     alert("Inicio de sesión exitoso!");
-                } else {
-                    saveLoginAttempt(email, false); // Save failed login attempt
-                    document.getElementById("error-message").textContent = "Correo o contraseña incorrectos";
+                } catch (error) {
+                    // Maneja errores de Firebase Authentication
+                    console.error("Error de autenticación:", error.code, error.message);
+
+                    // Guarda el intento de inicio de sesión fallido en Firestore
+                    await saveLoginAttempt(email, false);
+
+                    // Muestra un mensaje de error al usuario
+                    let errorMessage = "Error al iniciar sesión";
+                    if (error.code === "auth/user-not-found") {
+                        errorMessage = "El usuario no existe";
+                    } else if (error.code === "auth/wrong-password") {
+                        errorMessage = "Contraseña incorrecta";
+                    }
+                    document.getElementById("error-message").textContent = errorMessage;
                 }
             } else {
                 document.getElementById("error-message").textContent = "Por favor, completa todos los campos";
