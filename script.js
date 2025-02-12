@@ -70,3 +70,18 @@ function showSuccess(message) {
         loginBox.removeChild(successElement);
     }, 3000);
 }
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+    display: none;
+}
+
+.success-message {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    text-align: center;
+}
