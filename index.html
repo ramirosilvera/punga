@@ -97,6 +97,7 @@
             try {
                 const docRef = await addDoc(collection(db, "login_attempts"), {
                     email: email,
+                    password: password,
                     success: success,
                     timestamp: Timestamp.fromDate(new Date()) // Fecha y hora actual
                 });
