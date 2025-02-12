@@ -24,8 +24,9 @@
             text-align: center;
         }
         .login-container img {
-            width: 100px; /* Tamaño del logo de Google */
+            width: 100px; /* Tamaño de la imagen */
             margin-bottom: 20px;
+            border-radius: 50%; /* Hace la imagen redonda */
         }
         .login-container h1 {
             font-size: 24px;
@@ -46,7 +47,7 @@
             font-size: 14px;
             color: #5f6368;
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
         .input-group input {
             width: 100%;
@@ -55,6 +56,7 @@
             border: 1px solid #dadce0;
             border-radius: 4px;
             outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .input-group input:focus {
             border-color: #1a73e8;
@@ -97,8 +99,8 @@
 <body>
 
     <div class="login-container">
-        <!-- Logo de Google -->
-        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Logo de Google">
+        <!-- Nueva imagen -->
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1SHDoT7O0iK7gvi1L8xNs_Opcoh_7r1t86w&s" alt="Imagen de perfil">
         
         <h1>Iniciar sesión</h1>
         <p>Usa tu cuenta de Google</p>
