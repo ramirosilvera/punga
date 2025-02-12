@@ -30,21 +30,22 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* Alineación a la izquierda */
             padding: 40px;
             background-color: #1a1a1a; /* Fondo gris oscuro */
         }
         .left-side img {
-            width: 80px; /* Tamaño del logo */
+            width: 60px; /* Tamaño del logo ajustado */
             margin-bottom: 20px;
         }
         .left-side h1 {
-            font-size: 24px;
+            font-size: 28px; /* Tamaño del texto ajustado */
             font-weight: 500;
             margin-bottom: 10px;
+            color: #fff; /* Texto blanco */
         }
         .left-side p {
-            font-size: 14px;
+            font-size: 16px; /* Tamaño del texto ajustado */
             color: #9e9e9e; /* Texto gris claro */
         }
         .right-side {
@@ -53,9 +54,10 @@
             background-color: #000; /* Fondo negro */
         }
         .right-side h2 {
-            font-size: 20px;
+            font-size: 24px; /* Tamaño del texto ajustado */
             font-weight: 500;
             margin-bottom: 20px;
+            color: #fff; /* Texto blanco */
         }
         .input-group {
             margin-bottom: 20px;
@@ -112,6 +114,25 @@
             color: #9e9e9e; /* Texto gris claro */
             margin-top: 20px;
         }
+        .info-section {
+            font-size: 14px;
+            color: #9e9e9e; /* Texto gris claro */
+            margin-bottom: 20px;
+        }
+        .info-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .info-section ul li {
+            margin-bottom: 10px;
+        }
+        .info-section ul li a {
+            color: #1a73e8; /* Azul de Google */
+            text-decoration: none;
+        }
+        .info-section ul li a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -140,6 +161,13 @@
                     <button type="submit">Siguiente</button>
                 </div>
             </form>
+
+            <div class="info-section">
+                <ul>
+                    <li>(A) ¿No es tu computadora? Usa el modo de invitado para navegar de forma privada. <a href="#">Más información</a></li>
+                    <li>(B) ¿Olvidaste tu correo electrónico? <a href="#">Recupéralo aquí</a></li>
+                </ul>
+            </div>
 
             <div class="footer-links">
                 <a href="#">Crear cuenta</a> · <a href="#">Solicitar ayuda</a>
