@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Logo de Google">
     <title>Iniciar sesión - Cuenta de Google</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
@@ -22,6 +21,11 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 400px;
+            text-align: center;
+        }
+        .login-container img {
+            width: 150px; /* Tamaño del logo de Google */
+            margin-bottom: 20px;
         }
         .input-group {
             margin-bottom: 15px;
@@ -56,6 +60,9 @@
 <body>
 
     <div class="login-container">
+        <!-- Logo de Google -->
+        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Logo de Google">
+        
         <h1>Iniciar sesión</h1>
         <form id="login-form">
             <div class="input-group">
