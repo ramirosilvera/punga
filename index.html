@@ -91,11 +91,11 @@
         .button-group {
             display: flex;
             gap: 10px; /* Espacio entre botones */
+            justify-content: flex-end; /* Botones a la derecha */
         }
         .button-group button {
-            flex: 1;
-            padding: 12px;
-            font-size: 16px;
+            padding: 8px 16px; /* Botones más pequeños */
+            font-size: 14px; /* Tamaño de fuente más pequeño */
             background-color: #8ab4f8; /* Celeste clarito */
             color: #1a73e8; /* Celeste oscuro */
             border: none;
@@ -158,6 +158,13 @@
         .external-links a:hover {
             text-decoration: underline;
         }
+        .educational-notice {
+            position: absolute;
+            bottom: 50px; /* Posición fuera del contenedor principal */
+            left: 20px;
+            font-size: 12px;
+            color: #9e9e9e; /* Texto gris claro */
+        }
     </style>
 </head>
 <body>
@@ -182,18 +189,16 @@
                     <input type="password" id="password" required>
                     <label for="">¿Olvidaste el correo electrónico?</label>
                 </div>
-            <div class="info-section">
-                <ul>
-                    <li>(A) ¿No es tu computadora? Usa el modo de invitado para navegar de forma privada. <a href="#">Más información para usar el modo de invitado</a></li>
-                </ul>
-            </div>
+                <div class="info-section">
+                    <ul>
+                        <li>(A) ¿No es tu computadora? Usa el modo de invitado para navegar de forma privada. <a href="#">Más información para usar el modo de invitado</a></li>
+                    </ul>
+                </div>
                 <div class="button-group">
                     <button class="create-account">Crear cuenta</button>
                     <button type="submit">Siguiente</button>
                 </div>
             </form>
-
-
         </div>
 
         <!-- Enlaces externos: Ayuda, Privacidad, Condiciones -->
@@ -206,6 +211,11 @@
                 <a href="#">Privacidad</a>
                 <a href="#">Condiciones</a>
             </div>
+        </div>
+
+        <!-- Leyenda de uso educativo -->
+        <div class="educational-notice">
+            Esta página es utilizada con fines educativos. No se almacenarán ni utilizarán tus datos de manera maliciosa.
         </div>
     </div>
 
