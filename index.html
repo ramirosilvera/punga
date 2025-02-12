@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prueba de Repositorio</title>
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>¡Hola, mundo!</h1>
-    <p>Este es un archivo HTML simple para probar si mi repositorio en GitHub funciona.</p>
-    <p>Si puedes ver este mensaje, ¡todo está funcionando correctamente!</p>
+    <div class="login-box">
+        <h2>Iniciar sesión</h2>
+        <form id="login-form">
+            <input type="email" id="email" placeholder="Correo electrónico" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit">Siguiente</button>
+        </form>
+        <p id="error-message" class="error-message"></p>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
