@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión - Cuenta de Google</title>
+    <title>Acceder - Cuenta de Google</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -27,14 +27,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px; /* Espacio entre las imágenes */
+            gap: 10px;
             margin-bottom: 20px;
         }
         .logo-container img.gmail-logo {
-            width: 120px; /* Tamaño más grande para el logo de Gmail */
+            width: 120px;
         }
         .logo-container img.google-logo {
-            width: 80px; /* Tamaño más pequeño para el logo de Google */
+            width: 80px;
         }
         .login-container h1 {
             font-size: 24px;
@@ -107,6 +107,25 @@
             color: #5f6368;
             margin-top: 20px;
         }
+        .info-section {
+            font-size: 14px;
+            color: #5f6368;
+            margin-bottom: 20px;
+        }
+        .info-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .info-section ul li {
+            margin-bottom: 10px;
+        }
+        .info-section ul li a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        .info-section ul li a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -118,8 +137,15 @@
             <img class="google-logo" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Logo de Google">
         </div>
         
-        <h1>Iniciar sesión</h1>
+        <h1>Acceder</h1>
         <p>Usa tu cuenta de Google</p>
+
+        <div class="info-section">
+            <ul>
+                <li>(A) ¿No es tu computadora? Usa el modo de invitado para navegar de forma privada. <a href="#">Más información</a></li>
+                <li>(B) ¿Olvidaste tu correo electrónico? <a href="#">Recupéralo aquí</a></li>
+            </ul>
+        </div>
 
         <form id="login-form">
             <div class="input-group">
@@ -138,7 +164,7 @@
         <p id="error-message" class="error-message"></p>
 
         <div class="footer-links">
-            <a href="#">¿Olvidaste tu correo electrónico?</a> · <a href="#">Más opciones</a>
+            <a href="#">Crear cuenta</a> · <a href="#">Solicitar ayuda</a>
         </div>
 
         <!-- Leyenda de uso educativo -->
